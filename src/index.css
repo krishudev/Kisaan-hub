@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 142 30% 96%;
+    --foreground: 142 40% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 142 40% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 40% 12%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 142 30% 92%;
+    --secondary-foreground: 142 40% 12%;
+    --muted: 142 20% 94%;
+    --muted-foreground: 142 20% 40%;
+    --accent: 43 96% 50%;
+    --accent-foreground: 142 40% 12%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 142 30% 88%;
+    --input: 142 30% 88%;
+    --ring: 142 76% 36%;
+    --radius: 1rem;
+    
+    /* Custom agricultural colors */
+    --agri-green: 142 76% 36%;
+    --agri-green-light: 142 60% 55%;
+    --agri-green-dark: 142 80% 22%;
+    --agri-sun: 43 96% 50%;
+    --agri-water: 199 89% 48%;
+    --agri-soil: 30 40% 35%;
+    --agri-leaf: 84 65% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Smooth theme transitions across the whole app */
+  *, *::before, *::after {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease, fill 0.2s ease;
+  }
+  /* Exclude motion-critical elements from the blanket transition */
+  [data-framer-motion], canvas {
+    transition: none !important;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Dark mode CSS variables override */
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 213 31% 91%;
+    --card: 222 47% 11%;
+    --card-foreground: 213 31% 91%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 142 70% 45%;
+    --primary-foreground: 222 47% 7%;
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 222 47% 13%;
+    --muted-foreground: 215 16% 57%;
+    --accent: 222 47% 15%;
+    --accent-foreground: 213 31% 91%;
+    --destructive: 0 63% 55%;
+    --destructive-foreground: 213 31% 91%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 142 70% 45%;
+  }
+}
+
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-white/50 shadow-lg;
+  }
+  
+  .sensor-glow-green {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+  }
+  
+  .sensor-glow-blue {
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
+  }
+  
+  .sensor-glow-amber {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-500;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .gauge-circle {
+    transition: stroke-dashoffset 0.5s ease-out;
+  }
+  
+  .water-flow {
+    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.4), transparent);
+    animation: flow 2s linear infinite;
+  }
+  
+  @keyframes flow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ripple::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+  }
+  
+  .ripple:active::after {
+    transform: scale(2);
+    opacity: 1;
+    transition: 0s;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22c55e, #16a34a);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #16a34a, #15803d);
+}
