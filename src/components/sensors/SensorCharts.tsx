@@ -12,7 +12,6 @@ import {
   Legend,
 } from 'recharts';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { TrendingUp } from 'lucide-react';
 import type { SensorHistory } from '@/types/sensors';
 
 interface SensorChartsProps {
